@@ -23,7 +23,7 @@ It is related to the error function by erfi($x$)= erf($\iu x$)/\iu, and can be a
 \frac{1}{\pi} \fint_{-\infty}^{\infty} dy\ \frac{e^{a y^2 +2 b y}}{ y} = \frac{2}{\pi}\int_0^\infty dy \ e^{a y^2}\frac{\sinh(2 b y)}{ y}=\erfi\left(\frac{b}{\sqrt{-a}}\right).
 \label{eq:erfi-principal-integral}
 }
-for $a<0$. In this note we investigate an interesting property of the imaginary error function.
+for $a<0$. In this note we investigate a property of a function related to the imaginary error function.
 
 We can define two functions
 \eq{
@@ -32,19 +32,17 @@ We can define two functions
 }
 whose $\mathcal{L}^2$-orthogonality is seen from their respective parities. 
 
-We here show that $\phi_1$ is also normalized; consider the integral
+We here show that $\phi_1$ is, like $\phi_0$, $\mathcal{L}^2$-normalized; to this end consider the integral
 \eq{
-  I&=\int_{-\infty}^\infty dx \ \phi^2\left(x\right) =3\sqrt{\frac{2}{\pi}}\int_{-\infty}^\infty dx  \exp\left(-2x^2\right)\erfi^2\left(\sqrt{\frac{2}{3}}x\right).
+  I&=\int_{-\infty}^\infty dx \ \phi_1^2\left(x\right) =3\sqrt{\frac{2}{\pi}}\int_{-\infty}^\infty dx  \exp\left(-2x^2\right)\erfi^2\left(\sqrt{\frac{2}{3}}x\right).
 }
-Note that this integral is, to the best of our not knowledge, not currently tabulated in standard computer algebra systems (CAS) like Mathematica or Maple or the Wolfram Functions Site. 
+Note that this integral is, to the best of our knowledge, not currently tabulated in standard computer algebra systems (CAS) like Mathematica or Maple or the Wolfram Functions Site. 
 We use Eq. (\ref{eq:erfi-principal-integral}) to write
 \begin{subequations}
 \eq{
   I&=\frac{3}{\pi^2}\sqrt{\frac{2}{\pi}}\int_{-\infty}^\infty dx\exp\left(-2x^2\right)\fint_{-\infty}^\infty \frac{du}{u} \exp\left(-\frac{3}{2}u^2+2ux\right)\fint_{-\infty}^\infty \frac{dv}{v} \exp\left(-\frac{3}{2}v^2+2vx\right)\\
   &=\frac{3}{\pi^2}\sqrt{\frac{2}{\pi}}\fint_{-\infty}^\infty \frac{du}{u}\fint_{-\infty}^\infty \frac{dv}{v}
   \exp\left(-\frac{3}{2}u^2-\frac{3}{2}v^2\right) \int_{-\infty}^\infty dx \exp\left(-2x^2+2ux+2vx\right)\\
-  % &=\frac{3}{\pi^2}\fint_{-\infty}^\infty \frac{du}{u}\fint_{-\infty}^\infty \frac{dv}{v}
-  % \exp\left(-\frac{3}{2}u^2-\frac{3}{2}v^2+(u+v)^2/2\right) \\
   &=\frac{3}{\pi^2}\fint_{-\infty}^\infty \frac{du}{u}\exp\left(-u^2\right)\fint_{-\infty}^\infty \frac{dv}{v}
   \exp\left(-v^2+uv\right),
 }
