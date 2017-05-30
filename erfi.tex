@@ -28,28 +28,35 @@ for $a<0$. In this note we investigate a property of a function related to the i
 We can define two functions
 \eq{
   \phi_0(x)\equiv\frac{\exp\left(-x^2\right)}{\sqrt[4]{\pi/2}}, 
-\quad   \phi_1(x)\equiv\sqrt{3}\phi_0\left(x\right)\erfi\left(\sqrt{\frac{2}{3}}x\right),
+\quad   \phi_1(x)\equiv%\sqrt{3}\phi_0\left(x\right)\erfi\left(\sqrt{\frac{2}{3}}x\right),
+\mathcal{N}\left(\alpha\right)\phi_0\left(x\right)\erfi\left(\alpha x\right),
+\quad	\mathcal{N}\left(\alpha\right)=\sqrt{\frac{\pi}{2\sin^{-1}\left(\frac{\alpha^2}{2-\alpha^2}\right)}},
 }
 whose $\mathcal{L}^2$-orthogonality is seen from their respective parities. 
 
 We here show that $\phi_1$ is, like $\phi_0$, $\mathcal{L}^2$-normalized; to this end consider the integral
 \eq{
-  I&=\int_{-\infty}^\infty dx \ \phi_1^2\left(x\right) =3\sqrt{\frac{2}{\pi}}\int_{-\infty}^\infty dx  \exp\left(-2x^2\right)\erfi^2\left(\sqrt{\frac{2}{3}}x\right).
+  I&=\int_{-\infty}^\infty dx \ \phi_1^2\left(x\right) =\mathcal{N}^2\sqrt{\frac{2}{\pi}}\int_{-\infty}^\infty dx  \exp\left(-2x^2\right)\erfi^2\left(\alpha x\right).
 }
 Note that this integral is, to the best of our knowledge, not currently tabulated in standard computer algebra systems (CAS) like Mathematica or Maple or the Wolfram Functions Site. 
 We use Eq. (\ref{eq:erfi-principal-integral}) to write
 \begin{subequations}
 \eq{
-  I&=\frac{3}{\pi^2}\sqrt{\frac{2}{\pi}}\int_{-\infty}^\infty dx\exp\left(-2x^2\right)\fint_{-\infty}^\infty \frac{du}{u} \exp\left(-\frac{3}{2}u^2+2ux\right)\fint_{-\infty}^\infty \frac{dv}{v} \exp\left(-\frac{3}{2}v^2+2vx\right)\\
-  &=\frac{3}{\pi^2}\sqrt{\frac{2}{\pi}}\fint_{-\infty}^\infty \frac{du}{u}\fint_{-\infty}^\infty \frac{dv}{v}
-  \exp\left(-\frac{3}{2}u^2-\frac{3}{2}v^2\right) \int_{-\infty}^\infty dx \exp\left(-2x^2+2ux+2vx\right)\\
-  &=\frac{3}{\pi^2}\fint_{-\infty}^\infty \frac{du}{u}\exp\left(-u^2\right)\fint_{-\infty}^\infty \frac{dv}{v}
-  \exp\left(-v^2+uv\right),
+  I&=\frac{\mathcal{N}^2}{\pi^2}\sqrt{\frac{2}{\pi}}\int_{-\infty}^\infty dx\exp\left(-2x^2\right)\fint_{-\infty}^\infty \frac{du}{u} \exp\left(-\frac{1}{\alpha^2}u^2+2ux\right)\fint_{-\infty}^\infty \frac{dv}{v} \exp\left(-\frac{1}{\alpha^2}v^2+2vx\right)\\
+  &=\frac{\mathcal{N}^2}{\pi^2}\sqrt{\frac{2}{\pi}}\fint_{-\infty}^\infty \frac{du}{u}\fint_{-\infty}^\infty \frac{dv}{v}
+  \exp\left(-\frac{1}{\alpha^2}u^2-\frac{1}{\alpha^2}v^2\right) \int_{-\infty}^\infty dx \exp\left(-2x^2+2ux+2vx\right)\\
+  &=\frac{\mathcal{N}^2}{\pi^2}\fint_{-\infty}^\infty \frac{du}{u}\exp\left(-\beta u^2\right)\fint_{-\infty}^\infty \frac{dv}{v}
+  \exp\left(-\beta v^2+uv\right),
 }
 \end{subequations}
-where we have liberally switched the order of the integrals. We now again use Eq. (\ref{eq:erfi-principal-integral}) to find
+where we have liberally switched the order of the integrals and written $\beta=1/\alpha^2-1/2$. We now again use Eq. (\ref{eq:erfi-principal-integral}) to find
 \eq{
-  I&=\frac{3}{\pi^2}\fint_{-\infty}^\infty \frac{du}{u}\exp\left(-u^2\right)\left(\pi\erfi\left(\frac{u}{2}\right)\right)=\frac{6}{\pi}\underbrace{\int_{0}^\infty \frac{du}{u}\exp\left(-u^2\right)\erfi\left(\frac{u}{2}\right)}_{=\pi/6}=1.
+  I&=\frac{\mathcal{N}^2}{\pi^2}\fint_{-\infty}^\infty \frac{du}{u}\exp\left(-\beta u^2\right)\left(\pi\erfi\left(\frac{u}{2\sqrt{\beta}}\right)\right)
+  %=\frac{2\mathcal{N}^2}{\pi}\underbrace{\int_{0}^\infty \frac{du}{u}\exp\left(-u^2\right)\erfi\left(\frac{u}{2}\right)}_{=\pi/6}
+  =\frac{2\mathcal{N}^2}{\pi}\underbrace{\int_{0}^\infty \frac{du}{u}\exp\left(-\beta u^2\right)\erfi\left(\frac{u}{2\sqrt{\beta}}\right)}_{\sin^{-1}\frac{1}{2\beta}}
+  =1.
+  \label{eq:integral equals 1}
 }
-The last integral can be evaluated using any of the aforementioned CAS. The last equation shows that the set $\{\phi_0,\phi_1 \}$ forms an (incomplete) ortho\emph{normal} set in $\mathcal{L}^2$.
+The last integral can be evaluated using any of the aforementioned CAS for $\left|\beta\right|\geq1/2,\Re\left[\beta\right]>0$ (i.e., $\left|\alpha\right|\leq 1$% $\alpha^2+\alpha^{*2}\leq 2, \Re\left[\alpha\right]^2-\Im\left[\alpha\right]^2\geq 2\left|\alpha\right|^2$
+). Eq. (\ref{eq:integral equals 1}) shows that the set $\{\phi_0,\phi_1 \}$ forms an (incomplete) ortho\emph{normal} set in $\mathcal{L}^2$.
 \end{document}
